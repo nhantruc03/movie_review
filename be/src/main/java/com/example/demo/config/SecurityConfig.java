@@ -12,7 +12,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import lombok.RequiredArgsConstructor;
 
 @Configuration
-@EnableWebSecurity
+// @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
     

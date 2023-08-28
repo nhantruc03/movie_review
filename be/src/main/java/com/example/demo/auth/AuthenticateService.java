@@ -1,9 +1,12 @@
 package com.example.demo.auth;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.example.demo.config.JwtSerivce;
 import com.example.demo.entity.Role;
@@ -44,7 +47,12 @@ public class AuthenticateService {
 					new UsernamePasswordAuthenticationToken(body.getEmail(), body.getPassword())
 				);
 		
-		UserEntity user = userRepository.findByEmail(body.getEmail()).orElseThrow();
+		UserEntity user = userRepository.findByEmail(body.getEmail()).orElseThrow(
+			() -> 
+			// new UsernameNotFoundException("Credential is invalid!")
+			new ResponseStatusException(
+           HttpStatus.NOT_FOUND, "Foo Not Found")
+			);
 		
 		String jwtToken = jwtSerivce.generateToken(user);
 		

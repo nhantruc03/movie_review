@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,7 +48,10 @@ public class Movie {
     private List<String> genres;
     private List<String> backDrops;
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    // @JsonBackReference
+    @JsonIgnore
+    @JsonManagedReference
+    @OneToMany(mappedBy = "movie")
     private List<Review> reviews;
     
 }

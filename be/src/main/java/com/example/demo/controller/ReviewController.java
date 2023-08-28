@@ -1,7 +1,11 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
+import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +26,14 @@ public class ReviewController {
     
     @PostMapping("/add")
     public ResponseEntity<Review> add(@RequestBody Review review){
-        
 
-        return new ResponseEntity<>(reviewService.addReview(review), HttpStatus.OK);
+        return new ResponseEntity<>(reviewService.addReview(review), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Review>> getAll(){
+
+        return new ResponseEntity<>(reviewService.getAll(), HttpStatus.OK);
     }
 
     

@@ -23,4 +23,15 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
+    public Movie getById(Long id) {
+        return movieRepository.findById(id).orElse(null);
+    }
+
+     public Movie deleteById(Long id) {
+
+        Movie movieB4Delete = movieRepository.findById(id).orElse(null);
+        movieRepository.deleteById(id);
+        return movieB4Delete; 
+    }
+
 }

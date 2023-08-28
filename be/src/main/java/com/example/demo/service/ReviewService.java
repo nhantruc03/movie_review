@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,15 @@ public class ReviewService {
         review.setCreateDate(LocalDateTime.now());
 
         return reviewRepository.save(review);
+    }
+
+    public List<Review> getAll() {
+        
+        List<Review> res = reviewRepository.findAll();
+
+        // System.out.println(res.toString());
+
+        return res;
     }
 
     
