@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,10 +40,15 @@ public class Review {
     private LocalDateTime createDate;
 
     @ManyToOne
-    @JoinColumn(
-        nullable = false, 
-        table = "tbl_Movie"
+    @JoinColumn( 
+        name = "movie_id",
+        referencedColumnName = "id",
+        insertable = false,
+        updatable = false
     )
     private Movie movie;
 
+
+    @Column(name = "movie_id")
+    private Long movie_id;
 }
