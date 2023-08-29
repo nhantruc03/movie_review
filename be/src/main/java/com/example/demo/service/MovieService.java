@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Movie;
+import com.example.demo.exception.MovieNotFoundException;
 import com.example.demo.repo.MovieRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -24,13 +25,15 @@ public class MovieService {
     }
 
     public Movie getById(Long id) {
-        return movieRepository.findById(id).orElse(null);
+        return movieRepository.findById(id)
+            .orElseThrow(()-> new MovieNotFoundException("Movie not found: " + id));
     }
 
      public Movie deleteById(Long id) {
+        Movie movieB4Delete = movieRepository.findById(id).orElseThrow(()-> new MovieNotFoundException("Movie not found: " + id));
 
-        Movie movieB4Delete = movieRepository.findById(id).orElse(null);
         movieRepository.deleteById(id);
+
         return movieB4Delete; 
     }
 

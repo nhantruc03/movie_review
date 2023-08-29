@@ -27,9 +27,12 @@ public class ReviewService {
         
         List<Review> res = reviewRepository.findAll();
 
-        // System.out.println(res.toString());
-
         return res;
+    }
+
+    public List<Review> getAllByMovieId(Long movieId){
+        
+        return reviewRepository.findByMovie_id(movieId);
     }
 
     

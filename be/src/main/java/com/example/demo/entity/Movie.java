@@ -4,7 +4,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -40,9 +43,10 @@ public class Movie {
         generator = "movie_sequence"
     )
     private Long id;
-    private String name;
-    private String description;
-    private LocalDate releasDate;
+    private String imdbId;
+    private String title;
+    
+    private LocalDate releaseDate;
     private String trailerLink;
     private String poster;
     private List<String> genres;
