@@ -1,22 +1,13 @@
 package com.example.demo.entity;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -52,10 +43,10 @@ public class Movie {
     private List<String> genres;
     private List<String> backDrops;
 
-    // @JsonBackReference
-    @JsonIgnore
-    @JsonManagedReference
-    @OneToMany(mappedBy = "movie")
-    private List<Review> reviews;
+    // // @JsonBackReference
+    // @JsonIgnore
+    // @JsonManagedReference
+    // @OneToMany(mappedBy = "movie")
+    // private List<Review> reviews;
     
 }

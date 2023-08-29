@@ -2,9 +2,7 @@ package com.example.demo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,9 +11,7 @@ import org.springframework.core.io.Resource;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
-import io.micrometer.core.instrument.util.IOUtils;
 
 @SpringBootTest
 class DemoApplicationTests {

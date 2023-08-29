@@ -8,6 +8,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.example.demo.exception.ReviewNotFoundException;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import lombok.RequiredArgsConstructor;
 
 @ControllerAdvice
@@ -19,7 +20,12 @@ public class ExcHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ReviewNotFoundException.class)
     public ResponseEntity<Object> handleNoContent(ReviewNotFoundException e) {
 
-      
+     return resHandler.generateResponse(e.getMessage(), HttpStatus.NOT_FOUND);
+   }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<Object> handleExpiredJwtException(ExpiredJwtException e) {
+
      return resHandler.generateResponse(e.getMessage(), HttpStatus.NOT_FOUND);
    }
 
